@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://synergyprojects.in/sitemap.xml
