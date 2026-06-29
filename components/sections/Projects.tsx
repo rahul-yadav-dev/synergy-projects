@@ -4,7 +4,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import GlowCard from "@/components/ui/GlowCard";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import { PROJECTS } from "@/lib/constants";
-import { ArrowUpRight } from "lucide-react";
 
 const categoryGradients: Record<string, string> = {
   Industrial: "from-cyan-900/30 to-bg-surface",
@@ -33,9 +32,14 @@ export default function Projects() {
               <article>
                 <GlowCard>
                   <div
-                    className={`relative h-48 bg-gradient-to-b ${categoryGradients[project.category] ?? "from-cyan-900/30 to-bg-surface"}`}
+                    className={`relative h-48 overflow-hidden bg-gradient-to-b ${categoryGradients[project.category] ?? "from-cyan-900/30 to-bg-surface"}`}
                   >
-                    <div className="absolute inset-0 bg-grid opacity-50" />
+                    <img
+                      src={project.image}
+                      alt={`Synergy Projects electrical installation at ${project.name}`}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
                   </div>
 
                   <div className="p-5">

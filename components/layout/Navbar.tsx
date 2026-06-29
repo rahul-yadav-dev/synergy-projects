@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import Logo from "@/components/icons/Logo";
 import Button from "@/components/ui/Button";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { NAV_LINKS, BUSINESS_PHONE } from "@/lib/constants";
 
 export default function Navbar() {
@@ -50,6 +51,7 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <ThemeToggle />
           <Button variant="primary" href="#contact" className="ml-3">
             Book Appointment
           </Button>
@@ -57,6 +59,7 @@ export default function Navbar() {
 
         {/* Mobile controls */}
         <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <a
             href={`tel:+${BUSINESS_PHONE}`}
             aria-label="Call us"

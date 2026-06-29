@@ -56,36 +56,43 @@ export const PROJECTS = [
     name: "Hotel Pride Amber",
     category: "Hospitality",
     description: "Complete electrical installation for premium hotel property",
+    image: "/images/projects/hotel-pride-amber.jpeg",
   },
   {
     name: "LM Wind Power Blades India",
     category: "Industrial",
     description: "Industrial electrical systems for wind energy manufacturing",
+    image: "/images/projects/lm-wind-power.jpeg",
   },
   {
     name: "Eicher India Ltd.",
     category: "Industrial",
     description: "Electrical infrastructure for automotive manufacturing facility",
+    image: "/images/projects/eicher-india.jpeg",
   },
   {
     name: "Saint Gobain",
     category: "Design & Build",
     description: "Civil and fit-out works with complete electrical solutions",
+    image: "/images/projects/saint-gobain.jpeg",
   },
   {
     name: "Riata Life Sciences",
     category: "Commercial",
     description: "Electrical contracting for pharmaceutical facility",
+    image: "/images/projects/riata-life-sciences.jpeg",
   },
   {
     name: "Motherson Sumi Systems",
     category: "Industrial",
     description: "Electrical systems for auto component manufacturing",
+    image: "/images/projects/motherson-sumi.jpeg",
   },
   {
     name: "India Exposition Mart",
     category: "Commercial",
     description: "Large-scale electrical installation for exhibition center",
+    image: "/images/projects/india-exposition-mart.jpeg",
   },
 ] as const;
 

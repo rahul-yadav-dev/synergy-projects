@@ -88,6 +88,11 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme:light)').matches?'light':'dark';document.documentElement.dataset.theme=t})()`,
+          }}
+        />
         <StructuredData data={getLocalBusinessSchema()} />
         <StructuredData data={getOrganizationSchema()} />
         {serviceSchemas.map((schema, i) => (

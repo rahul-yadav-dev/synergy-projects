@@ -10,6 +10,16 @@
   --text-muted: #8B8B9E;
 }
 
+[data-theme="light"] {
+  --bg-primary: #FAFAFA;
+  --bg-surface: #FFFFFF;
+  --bg-surface-border: #E5E7EB;
+  --accent-cyan: #0891B2;
+  --accent-amber: #D97706;
+  --text-primary: #111827;
+  --text-muted: #6B7280;
+}
+
 @theme inline {
   --color-bg-primary: var(--bg-primary);
   --color-bg-surface: var(--bg-surface);
@@ -54,10 +64,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-grid {
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--accent-cyan) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent-cyan) 4%, transparent) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: grid-fade 8s ease-in-out infinite;
+}
+
+[data-theme="light"] .bg-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent-cyan) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent-cyan) 8%, transparent) 1px, transparent 1px);
 }
 
 @keyframes marquee {
