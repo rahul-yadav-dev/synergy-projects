@@ -1,0 +1,90 @@
+---
+description: Full project context for Synergy Projects website — company info, architecture, tech stack, file structure, SEO strategy, and conventions
+alwaysApply: true
+---
+
+# Synergy Projects Website — Project Context
+
+## Company Overview
+
+**M/s Synergy Projects** is an electrical contracting company based in India.
+- **Tagline:** "Smart Electricals, Stronger Infrastructure"
+- **Services:** Electrical design & drawing, turnkey project solutions, LT panel manufacturing, after-sales maintenance
+- **Sectors:** Industrial, commercial, hospitality (hotels/restaurants), warehouse, office construction
+- **Co-founders:** Fenil Chokshi (+91 90161 50931) and Yash Kumar (+91 98703 04006)
+- **Email:** synergyprojects2@gmail.com
+- **Head Office:** Office No. 118, West Rajiv Nagar, Gurgaon, Haryana — 122001
+- **Branch Office:** C-504, Sundram Residency, Opp Royal Green, Vadsar, Vadodara, Gujarat — 390010
+
+**Key Clients:** Saint Gobain, LM Wind Power, Eicher India, India Exposition Mart, Motherson Sumi Systems, Hotel Pride Amber, Riata Life Sciences
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router) with static export (`output: 'export'`)
+- **Styling:** Tailwind CSS v4 with CSS custom properties for theming
+- **Animations:** Framer Motion (component animations) + Lenis (smooth scroll)
+- **Form:** React Hook Form + Zod validation
+- **Icons:** Lucide React
+- **Fonts:** Inter (body) + Space Grotesk (headings) via `next/font`
+- **Node version:** 22 (via nvm)
+
+## Architecture
+
+Single-page scrolling website with 9 sections in order:
+1. Hero (split-text animation, grid background)
+2. About (two-column with circuit SVG)
+3. Services (4 glow cards)
+4. Stats (count-up counters)
+5. Projects (image grid with glow cards)
+6. Clients (infinite marquee)
+7. FAQ (accordion, drives FAQPage rich snippets)
+8. Book Appointment (WhatsApp form via wa.me API)
+9. Footer
+
+## Key File Paths
+
+- `app/layout.tsx` — Root layout, fonts, metadata, JSON-LD schemas, theme flash prevention script
+- `app/globals.css` — Theme variables (dark default + `[data-theme="light"]`), animations, utilities
+- `app/page.tsx` — Composes all sections with SmoothScroll wrapper
+- `lib/constants.ts` — ALL company data: phone numbers, services, projects, clients, FAQ, offices
+- `lib/whatsapp.ts` — WhatsApp URL builder using `BUSINESS_PHONE` from constants
+- `lib/seo.ts` — JSON-LD schema builders (ElectricalContractor, Organization, Service, FAQPage)
+- `components/ui/` — Reusable animation primitives (AnimateOnScroll, SplitText, CountUp, GlowCard, Marquee, Button, SectionHeading, ThemeToggle)
+- `components/sections/` — All 8 page sections (Hero, About, Services, Stats, Projects, Clients, FAQ, BookAppointment)
+- `components/layout/` — Navbar (glass-morphism, mobile menu), Footer, SmoothScroll provider
+- `components/seo/StructuredData.tsx` — Reusable JSON-LD script renderer
+- `components/icons/Logo.tsx` — SVG logo component
+- `public/images/projects/` — Project photos extracted from pitch deck PDF
+
+## Theme System
+
+Colors are defined as CSS custom properties in `:root` (dark) and `[data-theme="light"]`. All Tailwind classes reference these via `@theme inline` bridge. Switching theme only requires changing `data-theme` attribute on `<html>` — no component changes needed.
+
+Key color tokens: `bg-primary`, `bg-surface`, `bg-surface-border`, `accent-cyan`, `accent-amber`, `text-primary`, `text-muted`
+
+## WhatsApp Integration
+
+Form submit builds a pre-filled WhatsApp message and opens `wa.me/{BUSINESS_PHONE}`. The recipient number is `BUSINESS_PHONE` in `lib/constants.ts` (currently `919016150931` — Fenil's number). Format: country code + number, no spaces.
+
+## SEO Strategy
+
+- **Target keywords:** "electrical contractor Gurgaon", "electrical contractor Vadodara", "turnkey electrical solutions", "LT panel manufacturing"
+- **Structured data:** ElectricalContractor (LocalBusiness), Organization, Service (x4), FAQPage schemas rendered as JSON-LD in layout.tsx
+- **Static files:** `public/sitemap.xml`, `public/robots.txt`, `public/manifest.json`
+- **Heading hierarchy:** Single `<h1>` in Hero, all section headings are `<h2>`
+- **Semantic HTML:** `<header>`, `<main>`, `<section>` with aria-labels, `<article>`, `<address>`, `<footer>`
+
+## GitHub
+
+- **Repo:** `rahul-yadav-dev/synergy-projects` (SSH auth)
+- **Local git config:** email `rahulyadav3766@gmail.com`, name `rahul yadav`
+- **Deployment:** Static export to Vercel (connect GitHub repo for auto-deploy)
+
+## Conventions
+
+- All client components use `"use client"` directive
+- Interactive elements have `min-h-[48px]` for touch targets
+- Phone numbers use `tel:` links, email uses `mailto:` link
+- Images use `loading="lazy"` and descriptive alt text with keywords
+- `prefers-reduced-motion` respected via CSS media query in globals.css
+- Mobile-first responsive design using Tailwind breakpoints (sm/md/lg/xl)
